@@ -669,6 +669,10 @@ NSString static *const kYTPlayerSyndicationRegexPattern = @"^https://tpc.googles
  * @return YES if successful, NO if not.
  */
 - (BOOL)loadWithPlayerParams:(NSDictionary *)additionalPlayerParams {
+  
+  // fix ringtone mute
+  [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error: nil];
+  
   NSDictionary *playerCallbacks = @{
         @"onReady" : @"onReady",
         @"onStateChange" : @"onStateChange",
